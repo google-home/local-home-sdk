@@ -2,15 +2,19 @@
   "name": "@google/local-home-sdk",
   "version": "0.1.0",
   "description": "TypeScript type definitions for the Local home SDK",
+  "license": "Apache-2.0",
   "scripts": {
     "build": "tsc",
     "lint": "dtslint"
   },
   "author": "Google",
   "types": "index.d.ts",
-  "license": "Apache-2.0",
+  "files": [
+    "index.d.ts"
+  ],
   "devDependencies": {
     "typescript": "^3.5.1",
-    "dtslint": "^0.7.7"
+    "dtslint": "^0.7.7",
+    "typedoc": "^0.14.2"
   }
 }

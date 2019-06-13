@@ -1,0 +1,89 @@
+toc:
+- title: "smarthome"
+  path: /actions/smarthome/reference/local/modules/smarthome
+  section:
+  - title: "App"
+    path: /actions/smarthome/reference/local/classes/smarthome.app
+  - title: "DeviceManager"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.devicemanager
+  - title: "Intents"
+    path: /actions/smarthome/reference/local/enums/smarthome.intents
+  - title: "ProxyInfo"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.proxyinfo
+
+- title: "smarthome.Constants"
+  path: /actions/smarthome/reference/local/modules/smarthome.constants
+  section:
+  - title: "HttpOperation"
+    path: /actions/smarthome/reference/local/enums/smarthome.constants.httpoperation
+  - title: "Protocol"
+    path: /actions/smarthome/reference/local/enums/smarthome.constants.protocol
+  - title: "RadioType"
+    path: /actions/smarthome/reference/local/enums/smarthome.constants.radiotype
+  - title: "TcpOperation"
+    path: /actions/smarthome/reference/local/enums/smarthome.constants.tcpoperation
+
+- title: "smarthome.DataFlow"
+  path: /actions/smarthome/reference/local/modules/smarthome.dataflow
+  section:
+  - title: "HttpRequestData"
+    path: /actions/smarthome/reference/local/classes/smarthome.dataflow.httprequestdata
+  - title: "TcpRequestData"
+    path: /actions/smarthome/reference/local/classes/smarthome.dataflow.tcprequestdata
+  - title: "UdpRequestData"
+    path: /actions/smarthome/reference/local/classes/smarthome.dataflow.udprequestdata
+  - title: "Command"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.command
+  - title: "CommandBase"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.commandbase
+  - title: "CommandFailure"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.commandfailure
+  - title: "CommandSuccess"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.commandsuccess
+  - title: "HttpOptions"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.httpoptions
+  - title: "HttpResponse"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.httpresponse
+  - title: "HttpResponseData"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.httpresponsedata
+  - title: "TcpOptions"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.tcpoptions
+  - title: "TcpResponse"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.tcpresponse
+  - title: "TcpResponseData"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.tcpresponsedata
+  - title: "UdpOptions"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.udpoptions
+  - title: "UdpResponse"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.udpresponse
+  - title: "UdpResponseData"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.udpresponsedata
+
+
+- title: "smarthome.IntentFlow"
+  path: /actions/smarthome/reference/local/modules/smarthome.intentflow
+  section:
+  - title: "ErrorCode"
+    path: /actions/smarthome/reference/local/enums/smarthome.intentflow.errorcode
+  - title: "IndicationMode"
+    path: /actions/smarthome/reference/local/enums/smarthome.intentflow.indicationmode
+  - title: "HandlerError"
+    path: /actions/smarthome/reference/local/classes/smarthome.intentflow.errorcode
+  - title: "DeviceInfo"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.deviceinfo
+  - title: "DeviceScanData"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.devicescandata
+  - title: "IdentifyResponsePayload"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.identifyresponsepayload
+  - title: "LocalIdentifiedDevice"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.localidentifieddevice
+  - title: "LocalProxyDevice"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.localproxydevice
+  - title: "LocalUnIdentifiedDevice"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.localunidentifieddevice
+  - title: "ProxyDevice"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.proxydevice
+  - title: "ReachableDevicesPayload"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.reachabledevicespayload
+  - title: "UpnpScanData"
+    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.upnpscandata

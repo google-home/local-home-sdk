@@ -1,0 +1,5 @@
+# Node/npm files
+node_modules/
+
+# TypeDoc files
+docs/

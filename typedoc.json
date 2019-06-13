@@ -1,0 +1,10 @@
+{
+    "out": "docs",
+    "includeDeclarations": true,
+    "excludeExternals": true,
+    "ignoreCompilerErrors": true,
+    "name": "Local Home SDK",
+    "mode": "file",
+    "hideGenerator": true,
+    "readme": "docgen/HOME.md"
+}
