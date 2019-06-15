@@ -596,7 +596,7 @@ declare namespace smarthome {
     export enum RadioType {
       /** @hidden */
       BLE = 'BLE',
-      WIFI = 'WIFI'
+      WIFI = 'WIFI',
     }
 
     /** Protocol, to be used in commands while communicating with the SDK. */
@@ -808,10 +808,36 @@ declare namespace smarthome {
 /** Declares interface to represent scan data that gets send in IDENTIFY. */
 declare namespace smarthome {
   export namespace IntentFlow {
+    /** Supported Class codes. */
+    enum ClassType {
+      IN = 'IN',
+      /** @hidden */
+      CS = 'CS',
+      /** @hidden */
+      CH = 'CH',
+      /** @hidden */
+      HS = 'HS',
+    }
+    /** Definition for mDNS record. */
+    interface Record {
+      /** Type of the record. 'TXT', SRV, AAAA, etc. */
+      type: string;
+      /** Class code. As of now only 'IN'/IP network is supported. */
+      class: ClassType;
+      /** Which name is this record for e.g. 'google.com'. */
+      name: string;
+      /** @hidden  Time to live. */
+      ttl: number;
+      /** Data specific to this record. */
+      data: string;
+    }
     /**
      * Data packet returned with an mDNS scan result
      */
-    type MdnsScanData = string;
+    interface MdnsScanData {
+      /** mDNS additional records. */
+      additionals: Record[];
+    }
     /**
      * Data packet returned with a UDP scan result
      */
