@@ -8,6 +8,10 @@
     "lint": "dtslint"
   },
   "author": "Google",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/actions-on-google/local-home-sdk"
+  },
   "types": "index.d.ts",
   "files": [
     "index.d.ts"
