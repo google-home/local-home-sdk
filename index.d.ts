@@ -317,8 +317,8 @@ declare namespace smarthome {
 }
 /**
  * Declares App interface and Device Manager interface. App interface allows
- * AoGH apps to attach handlers for various intents. Device Manager interface
- * allows AoGH apps to communicate with the AoGH platform.
+ * local execution apps to attach handlers for various intents. Device Manager interface
+ * allows local execution apps to communicate with the Local Home platform.
  */
 declare namespace smarthome {
   export namespace IntentFlow {
@@ -585,7 +585,7 @@ declare namespace smarthome {
     }
   }
 }
-/** Declares request and response interface between AoGH apps and SDK */
+/** Declares request and response interface between local execution apps and SDK */
 declare namespace smarthome {
   /**
    * `smarthome.Constants` is a namespace that encapsulates a few
@@ -638,7 +638,7 @@ declare namespace smarthome {
     }
   }
 }
-/** Declares request and response interface between AoGH apps and SDK */
+/** Declares request and response interface between local execution apps and SDK */
 declare namespace smarthome {
   /**
    * <code>IntentFlow</code> is a namespace that encapsulates all intent request
