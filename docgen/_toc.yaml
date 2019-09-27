@@ -62,7 +62,7 @@ toc:
   - title: "IndicationMode"
     path: /actions/smarthome/reference/local/enums/smarthome.intentflow.indicationmode
   - title: "HandlerError"
-    path: /actions/smarthome/reference/local/classes/smarthome.intentflow.errorcode
+    path: /actions/smarthome/reference/local/classes/smarthome.intentflow.handlererror
   - title: "DeviceInfo"
     path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.deviceinfo
   - title: "IdentifyResponsePayload"
