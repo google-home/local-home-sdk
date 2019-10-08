@@ -1,83 +1,83 @@
 toc:
 - title: "smarthome"
-  path: /actions/smarthome/reference/local/modules/smarthome
+  path: /assistant/smarthome/reference/local/modules/smarthome
   section:
   - title: "App"
-    path: /actions/smarthome/reference/local/classes/smarthome.app
+    path: /assistant/smarthome/reference/local/classes/smarthome.app
   - title: "DeviceManager"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.devicemanager
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.devicemanager
   - title: "Intents"
-    path: /actions/smarthome/reference/local/enums/smarthome.intents
+    path: /assistant/smarthome/reference/local/enums/smarthome.intents
   - title: "ProxyInfo"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.proxyinfo
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.proxyinfo
 
 - title: "smarthome.Constants"
-  path: /actions/smarthome/reference/local/modules/smarthome.constants
+  path: /assistant/smarthome/reference/local/modules/smarthome.constants
   section:
   - title: "HttpOperation"
-    path: /actions/smarthome/reference/local/enums/smarthome.constants.httpoperation
+    path: /assistant/smarthome/reference/local/enums/smarthome.constants.httpoperation
   - title: "Protocol"
-    path: /actions/smarthome/reference/local/enums/smarthome.constants.protocol
+    path: /assistant/smarthome/reference/local/enums/smarthome.constants.protocol
   - title: "RadioType"
-    path: /actions/smarthome/reference/local/enums/smarthome.constants.radiotype
+    path: /assistant/smarthome/reference/local/enums/smarthome.constants.radiotype
   - title: "TcpOperation"
-    path: /actions/smarthome/reference/local/enums/smarthome.constants.tcpoperation
+    path: /assistant/smarthome/reference/local/enums/smarthome.constants.tcpoperation
 
 - title: "smarthome.DataFlow"
-  path: /actions/smarthome/reference/local/modules/smarthome.dataflow
+  path: /assistant/smarthome/reference/local/modules/smarthome.dataflow
   section:
   - title: "HttpRequestData"
-    path: /actions/smarthome/reference/local/classes/smarthome.dataflow.httprequestdata
+    path: /assistant/smarthome/reference/local/classes/smarthome.dataflow.httprequestdata
   - title: "TcpRequestData"
-    path: /actions/smarthome/reference/local/classes/smarthome.dataflow.tcprequestdata
+    path: /assistant/smarthome/reference/local/classes/smarthome.dataflow.tcprequestdata
   - title: "UdpRequestData"
-    path: /actions/smarthome/reference/local/classes/smarthome.dataflow.udprequestdata
+    path: /assistant/smarthome/reference/local/classes/smarthome.dataflow.udprequestdata
   - title: "CommandFailure"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.commandfailure
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.dataflow.commandfailure
   - title: "CommandSuccess"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.commandsuccess
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.dataflow.commandsuccess
   - title: "HttpResponseData"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.httpresponsedata
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.dataflow.httpresponsedata
   - title: "TcpResponseData"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.tcpresponsedata
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.dataflow.tcpresponsedata
   - title: "UdpResponseData"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.dataflow.udpresponsedata
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.dataflow.udpresponsedata
 
 - title: "smarthome.Execute"
-  path: /actions/smarthome/reference/local/modules/smarthome.execute
+  path: /assistant/smarthome/reference/local/modules/smarthome.execute
   section:
   - title: "smarthome.Execute.Response"
-    path: /actions/smarthome/reference/local/modules/smarthome.execute.response
+    path: /assistant/smarthome/reference/local/modules/smarthome.execute.response
     section:
     - title: "Builder"
-      path: /actions/smarthome/reference/local/classes/smarthome.execute.response.builder
+      path: /assistant/smarthome/reference/local/classes/smarthome.execute.response.builder
 
 - title: "smarthome.IntentFlow"
-  path: /actions/smarthome/reference/local/modules/smarthome.intentflow
+  path: /assistant/smarthome/reference/local/modules/smarthome.intentflow
   section:
   - title: "ClassType"
-    path: /actions/smarthome/reference/local/enums/smarthome.intentflow.classtype
+    path: /assistant/smarthome/reference/local/enums/smarthome.intentflow.classtype
   - title: "ErrorCode"
-    path: /actions/smarthome/reference/local/enums/smarthome.intentflow.errorcode
+    path: /assistant/smarthome/reference/local/enums/smarthome.intentflow.errorcode
   - title: "IndicationMode"
-    path: /actions/smarthome/reference/local/enums/smarthome.intentflow.indicationmode
+    path: /assistant/smarthome/reference/local/enums/smarthome.intentflow.indicationmode
   - title: "HandlerError"
-    path: /actions/smarthome/reference/local/classes/smarthome.intentflow.handlererror
+    path: /assistant/smarthome/reference/local/classes/smarthome.intentflow.handlererror
   - title: "DeviceInfo"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.deviceinfo
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.deviceinfo
   - title: "IdentifyResponsePayload"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.identifyresponsepayload
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.identifyresponsepayload
   - title: "LocalIdentifiedDevice"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.localidentifieddevice
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.localidentifieddevice
   - title: "LocalProxyDevice"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.localproxydevice
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.localproxydevice
   - title: "MdnsScanData"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.mdnsscandata
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.mdnsscandata
   - title: "ProxyDevice"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.proxydevice
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.proxydevice
   - title: "ReachableDevicesPayload"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.reachabledevicespayload
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.reachabledevicespayload
   - title: "Record"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.record
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.record
   - title: "UpnpScanData"
-    path: /actions/smarthome/reference/local/interfaces/smarthome.intentflow.upnpscandata
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.upnpscandata
