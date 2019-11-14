@@ -17,4 +17,4 @@ add the following lines:
 ```
 
 To get started using the Local Home SDK for smart home Actions, see the
-[local execution guide](/actions/smarthome/concepts/local).
+[local execution guide](/assistant/smarthome/concepts/local).
