@@ -11,6 +11,7 @@
  * limitations under the License.
  */
 
-/// <reference path="index">
+import * as smarthome from './index';
 
 const smarthomeApp: smarthome.App = new smarthome.App("1.1.1");
+

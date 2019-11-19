@@ -3,7 +3,7 @@
 
 # Run TypeDoc
 rm -rf docs/
-./node_modules/.bin/typedoc index.d.ts --theme docgen/theme/
+./node_modules/.bin/typedoc *.d.ts --theme docgen/theme/
 
 # Remove unnecessary files
 rm -f docs/assets/css/main.css.map
