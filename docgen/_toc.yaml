@@ -55,8 +55,6 @@ toc:
 - title: "smarthome.IntentFlow"
   path: /assistant/smarthome/reference/local/modules/smarthome.intentflow
   section:
-  - title: "ClassType"
-    path: /assistant/smarthome/reference/local/enums/smarthome.intentflow.classtype
   - title: "ErrorCode"
     path: /assistant/smarthome/reference/local/enums/smarthome.intentflow.errorcode
   - title: "IndicationMode"
@@ -69,15 +67,11 @@ toc:
     path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.identifyresponsepayload
   - title: "LocalIdentifiedDevice"
     path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.localidentifieddevice
-  - title: "LocalProxyDevice"
-    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.localproxydevice
   - title: "MdnsScanData"
     path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.mdnsscandata
-  - title: "ProxyDevice"
-    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.proxydevice
   - title: "ReachableDevicesPayload"
     path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.reachabledevicespayload
-  - title: "Record"
-    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.record
+  - title: "UdpScanData"
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.udpscandata
   - title: "UpnpScanData"
     path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.upnpscandata

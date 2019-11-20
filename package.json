@@ -1,21 +1,31 @@
 {
   "name": "@google/local-home-sdk",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "TypeScript type definitions for the Local Home SDK",
   "license": "Apache-2.0",
   "scripts": {
     "build": "tsc",
-    "lint": "dtslint"
+    "lint": "dtslint",
+    "docgen": "docgen/generate.sh"
   },
   "author": "Google",
   "repository": "actions-on-google/local-home-sdk",
   "types": "index.d.ts",
   "files": [
-    "index.d.ts"
+    "execute-builder.d.ts",
+    "cloud.d.ts",
+    "cmd.d.ts",
+    "constants.d.ts",
+    "execution-only.d.ts",
+    "generic.d.ts",
+    "index.d.ts",
+    "intentflow.d.ts",
+    "proxy.d.ts",
+    "scan-data.d.ts"
   ],
   "devDependencies": {
-    "typescript": "^3.5.1",
     "dtslint": "^0.7.7",
-    "typedoc": "^0.14.2"
+    "typedoc": "^0.15.2",
+    "typescript": "^3.5.1"
   }
 }
