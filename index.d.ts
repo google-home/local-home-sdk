@@ -1,12 +1,12 @@
-/// <reference path="./execute-builder" />
-/// <reference path="./cloud" />
-/// <reference path="./cmd" />
-/// <reference path="./constants" />
-/// <reference path="./execution-only" />
-/// <reference path="./generic" />
-/// <reference path="./intentflow" />
-/// <reference path="./proxy" />
-/// <reference path="./scan-data" />
+/// <reference path="./execute-builder.d.ts" />
+/// <reference path="./cloud.d.ts" />
+/// <reference path="./cmd.d.ts" />
+/// <reference path="./constants.d.ts" />
+/// <reference path="./execution-only.d.ts" />
+/// <reference path="./generic.d.ts" />
+/// <reference path="./intentflow.d.ts" />
+/// <reference path="./proxy.d.ts" />
+/// <reference path="./scan-data.d.ts" />
 
 
 export = smarthome;
