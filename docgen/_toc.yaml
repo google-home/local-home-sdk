@@ -2,18 +2,22 @@ toc:
 - title: "smarthome"
   path: /assistant/smarthome/reference/local/modules/smarthome
   section:
-  - title: "App"
-    path: /assistant/smarthome/reference/local/classes/smarthome.app
-  - title: "DeviceManager"
-    path: /assistant/smarthome/reference/local/interfaces/smarthome.devicemanager
+  - heading: "Enums"
   - title: "Intents"
     path: /assistant/smarthome/reference/local/enums/smarthome.intents
+  - heading: "Classes"
+  - title: "App"
+    path: /assistant/smarthome/reference/local/classes/smarthome.app
+  - heading: "Interfaces"
+  - title: "DeviceManager"
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.devicemanager
   - title: "ProxyInfo"
     path: /assistant/smarthome/reference/local/interfaces/smarthome.proxyinfo
 
 - title: "smarthome.Constants"
   path: /assistant/smarthome/reference/local/modules/smarthome.constants
   section:
+  - heading: "Enums"
   - title: "HttpOperation"
     path: /assistant/smarthome/reference/local/enums/smarthome.constants.httpoperation
   - title: "Protocol"
@@ -26,12 +30,14 @@ toc:
 - title: "smarthome.DataFlow"
   path: /assistant/smarthome/reference/local/modules/smarthome.dataflow
   section:
+  - heading: "Classes"
   - title: "HttpRequestData"
     path: /assistant/smarthome/reference/local/classes/smarthome.dataflow.httprequestdata
   - title: "TcpRequestData"
     path: /assistant/smarthome/reference/local/classes/smarthome.dataflow.tcprequestdata
   - title: "UdpRequestData"
     path: /assistant/smarthome/reference/local/classes/smarthome.dataflow.udprequestdata
+  - heading: "Interfaces"
   - title: "CommandFailure"
     path: /assistant/smarthome/reference/local/interfaces/smarthome.dataflow.commandfailure
   - title: "CommandSuccess"
@@ -49,26 +55,40 @@ toc:
   - title: "smarthome.Execute.Response"
     path: /assistant/smarthome/reference/local/modules/smarthome.execute.response
     section:
+    - heading: "Classes"
     - title: "Builder"
       path: /assistant/smarthome/reference/local/classes/smarthome.execute.response.builder
 
 - title: "smarthome.IntentFlow"
   path: /assistant/smarthome/reference/local/modules/smarthome.intentflow
   section:
-  - title: "ErrorCode"
-    path: /assistant/smarthome/reference/local/enums/smarthome.intentflow.errorcode
+  - heading: "Enums"
   - title: "IndicationMode"
     path: /assistant/smarthome/reference/local/enums/smarthome.intentflow.indicationmode
+  - heading: "Classes"
+  - title: "DeviceNotIdentifiedError"
+    path: /assistant/smarthome/reference/local/classes/smarthome.intentflow.devicenotidentifiederror
+  - title: "DeviceNotSupportedError"
+    path: /assistant/smarthome/reference/local/classes/smarthome.intentflow.devicenotsupportederror
   - title: "HandlerError"
     path: /assistant/smarthome/reference/local/classes/smarthome.intentflow.handlererror
+  - title: "InvalidRequestError"
+    path: /assistant/smarthome/reference/local/classes/smarthome.intentflow.invalidrequesterror
+  - heading: "Interfaces"
   - title: "DeviceInfo"
     path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.deviceinfo
+  - title: "ExecuteHandler"
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.executehandler
+  - title: "IdentifyHandler"
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.identifyhandler
   - title: "IdentifyResponsePayload"
     path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.identifyresponsepayload
   - title: "LocalIdentifiedDevice"
     path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.localidentifieddevice
   - title: "MdnsScanData"
     path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.mdnsscandata
+  - title: "ReachableDevicesHandler"
+    path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.reachabledeviceshandler
   - title: "ReachableDevicesPayload"
     path: /assistant/smarthome/reference/local/interfaces/smarthome.intentflow.reachabledevicespayload
   - title: "UdpScanData"

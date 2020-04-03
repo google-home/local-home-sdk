@@ -1,6 +1,6 @@
 # Local Home SDK Reference
 The Local Home SDK provides the TypeScript typings for building applications
-that support local execution for smart home integrations with the Google Assistant.
+that support local fulfillment for smart home integrations with the Google Assistant.
 
 These typings are distributed as an
 [npm package](https://www.npmjs.com/package/@google/local-home-sdk).
@@ -17,4 +17,4 @@ add the following lines:
 ```
 
 To get started using the Local Home SDK for smart home Actions, see the
-[local execution guide](/assistant/smarthome/concepts/local).
+[local fulfillment guide](/assistant/smarthome/concepts/local).
