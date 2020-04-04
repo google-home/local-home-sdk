@@ -17,28 +17,30 @@
 
 /**
  * Declares App interface and Device Manager interface. App interface allows
- * local execution apps to attach handlers for various intents. Device Manager
- * interface allows local execution apps to communicate with the Local Home
+ * local fulfillment apps to attach handlers for various intents. Device Manager
+ * interface allows local fulfillment apps to communicate with the Local Home
  * platform.
  */
 declare namespace smarthome {
   export namespace IntentFlow {
-    /** @hidden */
+    /**
+     * Results provided from a device scan on the local network.
+     * @hidden
+     */
     interface DeviceScanData {
-      /** List of radio interfaces used during the scan */
+      /** List of radio interfaces used during the scan. */
       radioTypes: Constants.RadioType[];
       /** Contains data if this result came from an mDNS scan. */
       mdnsScanData?: MdnsScanData;
-      /** Contains data if this result came from a UDP scan */
+      /** Contains data if this result came from a UDP scan. */
       udpScanData?: UdpScanData;
-      /** Contains data if this result came from a UPnP scan */
+      /** Contains data if this result came from a UPnP scan. */
       upnpScanData?: UpnpScanData;
     }
   }
 
   /**
    * Smart home intents for discovery and control of local devices.
-   * @preferred
    */
   export enum Intents {
     /**
@@ -48,7 +50,7 @@ declare namespace smarthome {
     EXECUTE = 'action.devices.EXECUTE',
     /**
      * Report devices discovered using your scan configuration that support
-     * local execution. For more details, see the [[IdentifyHandler]].
+     * local fulfillment. For more details, see the [[IdentifyHandler]].
      */
     IDENTIFY = 'action.devices.IDENTIFY',
     /**

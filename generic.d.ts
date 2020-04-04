@@ -25,7 +25,10 @@ declare namespace smarthome {
     /** Allows apps to choose the indication mode for their devices. */
     export enum IndicationMode {BLINK = 'BLINK'}
 
-    /** Error codes that can be used in intent responses. */
+    /**
+     * Error codes that can be used in intent responses.
+     * @hidden
+     */
     export enum ErrorCode {
       /** Returned when the intent is not supported by the application. */
       NOT_SUPPORTED = 'NOT_SUPPORTED',
@@ -38,6 +41,15 @@ declare namespace smarthome {
 
       /** Unspecified error occurred. */
       GENERIC_ERROR = 'GENERIC_ERROR',
+
+      /** Returned when the `device` is not identified correctly. */
+      DEVICE_NOT_IDENTIFIED = 'DEVICE_NOT_IDENTIFIED',
+
+      /** Returned when the `device` is not supported by local path. */
+      DEVICE_NOT_SUPPORTED = 'DEVICE_NOT_SUPPORTED',
+
+      /** Returned when the `device` is not found in sync-ed devices. */
+      DEVICE_VERIFICATION_FAILED = 'DEVICE_VERIFICATION_FAILED',
     }
 
     /**
@@ -184,6 +196,10 @@ declare namespace smarthome {
      * }
      * ```
      *
+     * Errors returned by your app are visible in your cloud project logs.
+     * For more details, see the error logging
+     * [developer guide](/assistant/smarthome/develop/error-logging).
+     *
      */
     export class HandlerError extends Error {
       /** Request ID from the associated `EXECUTE` intent. */
@@ -193,11 +209,58 @@ declare namespace smarthome {
       /** Human readable description of this error */
       debugString?: string;
       /**
-       * @param requestId Request ID from the associated `EXECUTE` intent.
-       * @param errorCode The cause for this error
+       * @param requestId Request ID of the intent.
+       * @param errorCode The cause for this error. For more details on error
+       *     codes, see [errors and
+       *     exceptions](/assistant/smarthome/reference/errors-exceptions).
        * @param debugString Human readable description of this error
        */
-      constructor(requestId: string, errorCode: string, debugString?: string);
+      constructor(requestId: string, errorCode?: string, debugString?: string);
+    }
+
+    /**
+     * Use the `DeviceNotSupportedError` to indicate that the discovered device
+     * provided to your [[IdentifyHandler]] should be ignored. The platform will
+     * not report this device to your app again until the next reboot.
+     *
+     * For more details on error handling, see [[HandlerError]].
+     */
+    export class DeviceNotSupportedError extends HandlerError {
+      /**
+       * @param requestId Request ID of the intent.
+       * @param debugString Human readable description of this error.
+       */
+      constructor(requestId: string, debugString?: string);
+    }
+
+    /**
+     * Use the `DeviceNotIdentifiedError` to indicate that you are unable to
+     * identify the discovered device provided to your [[IdentifyHandler]] using
+     * the provided scan data. The platform will not report this device to your
+     * app again until the next reset.
+     *
+     * For more details on error handling, see [[HandlerError]].
+     */
+    export class DeviceNotIdentifiedError extends HandlerError {
+      /**
+       * @param requestId Request ID of the intent.
+       * @param debugString Human readable description of this error.
+       */
+      constructor(requestId: string, debugString?: string);
+    }
+
+    /**
+     * Use the `InvalidRequestError` to indicate that you are unable to process
+     * the intent request provided to your app.
+     *
+     * For more details on error handling, see [[HandlerError]].
+     */
+    export class InvalidRequestError extends HandlerError {
+      /**
+       * @param requestId Request ID of the intent.
+       * @param debugString Human readable description of this error.
+       */
+      constructor(requestId: string, debugString?: string);
     }
   }
 }

@@ -16,7 +16,8 @@
  */
 
 /**
- * Declares request and response interface between local execution apps and SDK
+ * Declares request and response interface between local fulfillment apps and
+ * the Local Home SDK
  */
 declare namespace smarthome {
   /**
@@ -24,10 +25,7 @@ declare namespace smarthome {
    * @preferred
    */
   export namespace IntentFlow {
-    /**
-     * @hidden Placeholder for `DeviceScanData`. Actual list depends upon
-     * type of integration.
-     */
+    // Placeholder interface. Actual implementation depends on integration.
     interface DeviceScanData {}
 
     /**
@@ -36,15 +34,15 @@ declare namespace smarthome {
     interface LocalUnIdentifiedDevice extends DeviceScanData {}
 
     /**
-     * Scan data and device ids provided by an [[IdentifyRequest]] to the
+     * Scan data and device IDs provided by an [[IdentifyRequest]] to the
      * application's `IDENTIFY` handler.
      */
     interface LocalIdentifiedDevice extends DeviceScanData {
-      /** Device ID provided in the `SYNC` response */
+      /** Device ID provided in the `SYNC` response. */
       id?: string;
       /**
-       * Custom data provided in the `SYNC` response. CustomData for the hub is
-       * not present because hub devices are not part of the `SYNC` response.
+       * Custom data provided in the `SYNC` response. Not present if
+       * the device has `isLocalOnly` set to `true`.
        */
       customData?: unknown;
       /** @hidden Proxy data provided by `PROXY_SELECTED` response */
@@ -55,6 +53,8 @@ declare namespace smarthome {
      * Request passed to the application's `IDENTIFY` intent handler,
      * containing a [[LocalIdentifiedDevice]] detected by the local
      * scan configuration.
+     *
+     * See [[IdentifyHandler]] for more details.
      */
     export type IdentifyRequest = RequestInterface<LocalIdentifiedDevice>;
 
@@ -62,6 +62,8 @@ declare namespace smarthome {
      * Request passed to the application's `REACHABLE_DEVICES` intent handler,
      * containing a [[LocalIdentifiedDevice]] successfully identified as a proxy
      * or hub.
+     *
+     * See [[ReachableDevicesHandler]] for more details.
      */
     export type ReachableDevicesRequest =
         RequestInterface<LocalIdentifiedDevice>;
@@ -83,7 +85,7 @@ declare namespace smarthome {
         /** @hidden */
         commandedOverProxy?: boolean;
         /**
-         * True if this device does not appear in the `SYNC response.
+         * True if this device does not appear in the `SYNC` response.
          * This is common for hub devices.
          */
         isLocalOnly?: boolean;
@@ -110,7 +112,7 @@ declare namespace smarthome {
      * `REACHABLE_DEVICES` intent handler.
      */
     interface ReachableDevicesPayload extends ResponsePayload {
-      /** List of device identifiers visible to the proxy device */
+      /** List of device identifiers visible to the proxy device. */
       devices: Array<{
         /**
          * Local device ID. Use this value if the reachable device is
@@ -128,11 +130,15 @@ declare namespace smarthome {
     /**
      * Response returned by the application's `IDENTIFY` intent handler
      * to describe the locally discovered device.
+     *
+     * See [[IdentifyHandler]] for more details.
      */
     export type IdentifyResponse = ResponseInterface<IdentifyResponsePayload>;
     /**
      * Response returned by the application's `REACHABLE_DEVICES` intent handler
      * to describe additional devices visible to the proxy device.
+     *
+     * See [[ReachableDevicesHandler]] for more details.
      */
     export type ReachableDevicesResponse =
         ResponseInterface<ReachableDevicesPayload>;
@@ -141,13 +147,13 @@ declare namespace smarthome {
      * Callback registered with the [[App]] via [[App.onIdentify]] to process
      * incoming device discovery requests.
      *
-     * To support local execution, the local home platform sends an `IDENTIFY`
+     * To support local fulfillment, the local home platform sends an `IDENTIFY`
      * intent to discover what devices are present locally, then uses the
      * `SYNC` intent to verify with the provider's cloud service that the
-     * device is available for local execution.
+     * device is available for local fulfillment.
      *
-     * To learn more about how the platform establishes a local execution path,
-     * see the [developer guide](/assistant/smarthome/develop/local).
+     * To learn more about how the platform establishes a local fulfillment
+     * path, see the [developer guide](/assistant/smarthome/develop/local).
      *
      * ```typescript
      * const identifyHandler = (request: IntentFlow.IdentifyRequest):
@@ -176,8 +182,8 @@ declare namespace smarthome {
      * ```
      *
      */
-    export type IdentifyHandler =
-        IntentHandler<IdentifyRequest, IdentifyResponse>;
+    export interface IdentifyHandler extends
+        IntentHandler<IdentifyRequest, IdentifyResponse> {}
 
     /**
      * Callback registered with the [[App]] via [[App.onReachableDevices]] to
@@ -222,7 +228,7 @@ declare namespace smarthome {
      * ```
      *
      */
-    export type ReachableDevicesHandler =
-        IntentHandler<ReachableDevicesRequest, ReachableDevicesResponse>;
+    export interface ReachableDevicesHandler extends
+        IntentHandler<ReachableDevicesRequest, ReachableDevicesResponse> {}
   }
 }

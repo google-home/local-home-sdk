@@ -20,10 +20,7 @@
  * @preferred
  */
 declare namespace smarthome {
-  /**
-   * Placeholder enum for smart home Intents. Actual list depends upon
-   * type of integration.
-   */
+  // Placeholder enum. Actual implementation depends on integration.
   export enum Intents {}
 
   /**

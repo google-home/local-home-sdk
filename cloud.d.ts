@@ -50,6 +50,8 @@ declare namespace smarthome {
     /**
      * Request passed to the application's `QUERY` intent handler,
      * containing a list of device IDs to report state.
+     *
+     * See [[QueryHandler]] for more details.
      * @hidden
      */
     export type QueryRequest = CloudRequest<QueryRequestPayload>;
@@ -84,6 +86,8 @@ declare namespace smarthome {
     /**
      * Request passed to the application's `EXECUTE` intent handler,
      * containing a list of commands and target device IDs to be updated.
+     *
+     * See [[ExecuteHandler]] for more details.
      */
     export type ExecuteRequest = CloudRequest<ExecuteRequestPayload>;
 
@@ -115,6 +119,8 @@ declare namespace smarthome {
     }
     /**
      * Response returned by the application's `QUERY` intent handler.
+     *
+     * See [[QueryHandler]] for more details.
      * @hidden
      */
     export type QueryResponse = CloudResponse<QueryPayload>;
@@ -179,6 +185,7 @@ declare namespace smarthome {
      * return result.then(() => response.build());
      * ```
      *
+     * See [[ExecuteHandler]] for more details.
      */
     export type ExecuteResponse = CloudResponse<ExecutePayload>;
 
@@ -187,13 +194,14 @@ declare namespace smarthome {
      * requests for current device state.
      * @hidden
      */
-    export type QueryHandler = IntentHandler<QueryRequest, QueryResponse>;
+    export interface QueryHandler extends
+        IntentHandler<QueryRequest, QueryResponse> {}
     /**
      * Callback registered with the [[App]] via [[App.onExecute]] to process
      * requests to update device state.
      *
-     * To support local execution, the local home platform must first establish
-     * a local execution path. For more details, see the
+     * To support local fulfillment, the local home platform must first
+     * establish a local fulfillment path. For more details, see the
      * [developer guide](/assistant/smarthome/develop/local).
      *
      * ```typescript
@@ -231,6 +239,7 @@ declare namespace smarthome {
      * ```
      *
      */
-    export type ExecuteHandler = IntentHandler<ExecuteRequest, ExecuteResponse>;
+    export interface ExecuteHandler extends
+        IntentHandler<ExecuteRequest, ExecuteResponse> {}
   }
 }
