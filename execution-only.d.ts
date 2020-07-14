@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright 2019 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -115,6 +115,9 @@ declare namespace smarthome {
      * [[DataFlow.CommandRequest]] object and passes it as an argument.
      * Returns a promise that resolves to [[DataFlow.CommandSuccess]]. Response
      * may return data, if it was a read request.
+     *
+     * See also [[HttpRequestData]], [[TcpRequestData]], [[UdpRequestData]]
+     *
      * @param command  Command to communicate with the device.
      * @return  Promise that resolves to [[DataFlow.CommandSuccess]]
      */

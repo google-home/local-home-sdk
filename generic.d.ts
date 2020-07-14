@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright 2019 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -173,6 +173,12 @@ declare namespace smarthome {
      * @hidden Generic intent handler.
      */
     interface IntentHandler<REQ, RES> {
+      /**
+       * Callback function for the intent.
+       *
+       * Implement this function to handle each intent request and return
+       * a response.
+       */
       (request: REQ): Promise<RES>|RES;
     }
 

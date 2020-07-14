@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright 2019 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,8 +30,22 @@ declare namespace smarthome {
     interface HttpOptions {
       /** HTTP Content-Type header */
       dataType: string;
-      /** List of HTTP headers for the request */
+      /**
+       * List of HTTP headers for the request.
+       * @deprecated use [[HttpRequestData.additionalHeaders]]
+       */
       headers: string;
+      /**
+       * Additional HTTP headers for the request, as an object containing
+       * key/value pairs.
+       * ```
+       * {
+       *   'Authorization': 'Bearer ...',
+       *   'Accept': 'application/json',
+       * }
+       * ```
+       */
+      additionalHeaders: {[key: string]: string};
       /** @hidden @deprecated True to send using HTTPS, false for HTTP */
       isSecure?: boolean;
       /** HTTP method to perform */
@@ -41,11 +55,11 @@ declare namespace smarthome {
       /** Port number on the target device. Default is port 80. */
       port?: number;
     }
-    /** @hidden */
+    /** Content of an HTTP response */
     interface HttpResponse {
       /** HTTP response code */
       statusCode: number;
-      /** Content of the HTTP response */
+      /** HTTP response body */
       body: unknown;
     }
     /** @hidden */
@@ -61,18 +75,27 @@ declare namespace smarthome {
       /** For read requests, number of expected bytes */
       bytesToRead?: number;
     }
-    /** @hidden */
+    /** Content of a TCP response */
     interface TcpResponse {
-      /** Content of the TCP response */
+      /** Hex-encoded payload received from the device. */
       data: string;
     }
     /** @hidden */
     interface UdpOptions {
       /** Port number on the target device */
       port: number;
+      /**
+       * Expected number of UDP response packets. Actual number of packets
+       * received in the [[UdpResponseData]] may not match expected value if
+       * timeout of 1 second is exceeded.
+       */
+      expectedResponsePackets?: number;
     }
-    /** @hidden */
-    interface UdpResponse {}
+    /** Content of a UDP response */
+    interface UdpResponse {
+      /** Array of hex-encoded packets received from the device. */
+      responsePackets?: string[];
+    }
     /** @hidden */
     interface CommandBase {
       /** Request ID from the associated `EXECUTE` intent.  */
@@ -122,6 +145,25 @@ declare namespace smarthome {
      * command.data = JSON.stringify(postData);
      * ```
      *
+     * ## Handle the response
+     *
+     * If the command succeeds, [[DeviceManager.send]] returns an
+     * [[HttpResponseData]] result, which contains the [[HttpResponse]].
+     *
+     * ```typescript
+     * const command = new DataFlow.HttpRequestData();
+     * ...
+     *
+     * localHomeApp.getDeviceManager()
+     *  .send(command)
+     *  .then((result: DataFlow.CommandSuccess) => {
+     *    const httpResult = result as DataFlow.HttpResponseData;
+     *    const responseBody = httpResult.httpResponse.body;
+     *  })
+     *  .catch((err: IntentFlow.HandlerError) => {
+     *    // Handle command error
+     *  });
+     * ```
      */
     export class HttpRequestData implements HttpRequestData {}
     /**
@@ -140,6 +182,27 @@ declare namespace smarthome {
      * command.data = Buffer.from(payload).toString('hex');
      * ```
      *
+     * ## Handle the response
+     *
+     * If the command succeeds, [[DeviceManager.send]] returns a
+     * [[TcpResponseData]] result. For [[TcpOperation.READ]] commands, the
+     * result contains a [[TcpResponse]].
+     *
+     * ```typescript
+     * const command = new DataFlow.TcpRequestData();
+     * command.operation = Constants.TcpOperation.READ;
+     * ...
+     *
+     * localHomeApp.getDeviceManager()
+     *  .send(command)
+     *  .then((result: DataFlow.CommandSuccess) => {
+     *    const tcpResult = result as DataFlow.TcpResponseData;
+     *    const response = tcpResult.tcpResponse.data;
+     *  })
+     *  .catch((err: IntentFlow.HandlerError) => {
+     *    // Handle command error
+     *  });
+     * ```
      */
     export class TcpRequestData implements TcpRequestData {}
     /**
@@ -155,31 +218,59 @@ declare namespace smarthome {
      * command.deviceId = 'device-id';
      * command.port = 5555;
      * command.data = Buffer.from(payload).toString('hex');
+     * command.expectedResponsePackets = 1;
      * ```
      *
+     * ## Handle the response
+     *
+     * If the command succeeds, [[DeviceManager.send]] returns a
+     * [[UdpResponseData]] result. For commands with
+     * [[UdpRequestData.expectedResponsePackets]] set, the result contains a
+     * [[UdpResponse]].
+     *
+     * ```typescript
+     * const command = new DataFlow.UdpRequestData();
+     * command.expectedResponsePackets = 1;
+     * ...
+     *
+     * localHomeApp.getDeviceManager()
+     *  .send(command)
+     *  .then((result: DataFlow.CommandSuccess) => {
+     *    const udpResult = result as DataFlow.UdpResponseData;
+     *    const packets = udpResult.udpResponse.responsePackets;
+     *  })
+     *  .catch((err: IntentFlow.HandlerError) => {
+     *    // Handle command error
+     *  });
+     * ```
      */
     export class UdpRequestData implements UdpRequestData {}
 
     /**
-     * Successful response to a [[DeviceManager]] command
+     * Successful response to a [[DeviceManager]] command.
      */
     interface CommandSuccess extends CommandBase {}
-    /** Type for HTTP command response. */
+    /** Command result containing an [[HttpResponse]]. */
     export interface HttpResponseData extends CommandSuccess {
       /** Response to an HTTP request */
       httpResponse: HttpResponse;
     }
-    /** Type for TCP command response. */
+    /** Command result containing a [[TcpResponse]]. */
     export interface TcpResponseData extends CommandSuccess {
       /** Response to a TCP request */
       tcpResponse: TcpResponse;
     }
-    /** Type for UDP command response. */
-    export interface UdpResponseData extends CommandSuccess {}
+    /** Command result containing a [[UdpResponse]]. */
+    export interface UdpResponseData extends CommandSuccess {
+      /** Response to a UDP request. */
+      udpResponse: UdpResponse;
+    }
 
     /**
      * Response to a [[DeviceManager]] command that resulted
      * in an error.
+     *
+     * @deprecated See [[HandlerError]] for handling command failures.
      */
     export interface CommandFailure extends CommandBase {
       /** The cause for this error */

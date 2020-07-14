@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright 2019 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -76,34 +76,61 @@ declare namespace smarthome {
       device: {
         /** Device ID from `IdentifyRequest` */
         id: string;
-        /** @hidden Hardware type of the device */
-        type?: string;
-        /** @hidden Metadata describing the device */
-        deviceInfo?: DeviceInfo;
-        /** @hidden */
-        indicationMode?: IndicationMode;
-        /** @hidden */
-        commandedOverProxy?: boolean;
-        /**
-         * True if this device does not appear in the `SYNC` response.
-         * This is common for hub devices.
-         */
-        isLocalOnly?: boolean;
-        /**
-         * True if this device can act as a proxy for other devices, enabling
-         * the `REACHABLE_DEVICES` intent.
-         * This is common for hub devices.
-         */
-        isProxy?: boolean;
-        /** @hidden */
-        requiresBonding?: boolean;
         /**
          * Local device ID. This value must match one of the `otherDeviceIds`
          * in the `SYNC` response.
          */
         verificationId?: string;
-        /** @hidden */
+        /** @hidden Hardware type of the device */
+        type?: string;
+        /** @hidden Metadata describing the device */
+        deviceInfo?: DeviceInfo;
+        /**
+         * Describes how the device will behave when sent an INDICATE intent.
+         * @hidden
+         */
+        indicationMode?: IndicationMode;
+        /**
+         * If true, this device can act as a proxy for other devices, enabling
+         * the `REACHABLE_DEVICES` intent.
+         * This is common for hub devices.
+         */
+        isProxy?: boolean;
+        /**
+         * If true, indicates that the device can receive proxy commands from
+         * other devices.
+         * @hidden
+         */
+        commandedOverProxy?: boolean;
+        /**
+         * If true, this device does not appear in the `SYNC` response.
+         * This is common for hub devices.
+         */
+        isLocalOnly?: boolean;
+        /**
+         * If true, indicates that the BLE device must be bonded to before
+         * sending commands.
+         * @hidden
+         */
+        requiresBonding?: boolean;
+        /**
+         * If true, indicates that a connection to the BLE device should
+         * not be established automatically.
+         * @hidden
+         */
         avoidAutoconnect?: boolean;
+        /**
+         * If true, indicates that the device is capable of being updated via
+         * commands from other devices.
+         * @hidden
+         */
+        canBeUpdatedOverProxy?: boolean;
+        /**
+         * If true, indicates that the device is capable of being unprovisioned
+         * via commands from other devices.
+         * @hidden
+         */
+        canBeUnprovisionedOverProxy?: boolean;
       };
     }
 
