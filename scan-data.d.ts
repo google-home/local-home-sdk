@@ -129,5 +129,7 @@ declare namespace smarthome {
        */
       port: number;
     }
+    /** @hidden Placeholder. Actual implementation depends on integration. */
+    interface ScanData {}
   }
 }

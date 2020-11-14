@@ -62,9 +62,16 @@ declare namespace smarthome {
       /** HTTP response body */
       body: unknown;
     }
+
+    /** @hidden */
+    interface Template {}
+
+    /** @hidden Supported Cipher Suites */
+    type CipherSuites = 'EC-JPAKE';
+
     /** @hidden */
     interface TcpOptions {
-      /** @hidden @deprecated True to enable TLS for this request */
+      /** @hidden True to enable TLS for this request */
       isSecure?: boolean;
       /** Port number on the target device */
       port: number;
@@ -74,6 +81,10 @@ declare namespace smarthome {
       hostname?: string;
       /** For read requests, number of expected bytes */
       bytesToRead?: number;
+      /** @hidden Cipher suite to be used for TLS */
+      cipher?: CipherSuites;
+      /** @hidden Short code needed with EC-JPAKE */
+      shortCode?: string;
     }
     /** Content of a TCP response */
     interface TcpResponse {
@@ -109,6 +120,8 @@ declare namespace smarthome {
     interface Command extends CommandBase {
       /** Payload sent to the target device */
       data: string;
+      /** @hidden Experimental feature, to apply template parameters to data */
+      template?: Template;
     }
 
     interface HttpRequestData extends Command, HttpOptions {}
@@ -278,5 +291,28 @@ declare namespace smarthome {
       /** Human readable description of this error */
       debugString?: string;
     }
+  }
+
+  /**
+   * Options for [[DeviceManager.send]] API.
+   * Use `send(command, {commandTimeout: 1000});` to wait for the platform to
+   * respond with success or timeout after 1000ms.
+   * Use `send(command, {retries: 2, delayInMilliseconds: 20});` to retry a
+   * command 2 times with 20ms delay between each retry.
+   */
+  export interface SendOptions {
+    /**
+     * Waits for command response for upto `commandTimeout` ms but no less than
+     * 1000ms. Usage outside execute handler is not recommended. In addition, it
+     * should be used only when platform provided timeouts are not enough.
+     */
+    commandTimeout?: number;
+    /**
+     * Retries the command upto `retries` times upto 3 times. `commandTimeout`
+     * applies to each command. Each retry will also get the timeout.
+     */
+    retries?: number;
+    /** Delay in ms between each retry. Default is no-delay between commands. */
+    delayInMilliseconds?: number;
   }
 }

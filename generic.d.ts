@@ -117,12 +117,12 @@ declare namespace smarthome {
       /** True if this device publishes state updates in real time */
       willReportState: boolean;
     }
-    /**
-     * @hidden
-     */
-    interface DeviceMap {
+    /** @hidden */
+    interface RegisteredDevice {
       id: string;
       customData?: unknown;
+      radioType?: Constants.RadioType;
+      scanData?: IntentFlow.ScanData;
     }
     /**
      * @hidden Generic intent request interface.
@@ -150,7 +150,8 @@ declare namespace smarthome {
     interface RequestInterface<D, T = {}> {
       requestId: string;
       inputs: Array<Input<D, T>>;
-      devices: DeviceMap[];
+      /** @deprecated use [[DeviceManager.getRegisteredDevices]] */
+      devices: RegisteredDevice[];
     }
     /**
      * @hidden Generic intent response interface.

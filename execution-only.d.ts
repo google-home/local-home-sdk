@@ -23,6 +23,16 @@
  */
 declare namespace smarthome {
   export namespace IntentFlow {
+    /** @hidden */
+    interface ScanData {
+      /** Contains data if this result came from an mDNS scan. */
+      mdnsScanData?: MdnsScanData;
+      /** Contains data if this result came from a UDP scan. */
+      udpScanData?: UdpScanData;
+      /** Contains data if this result came from a UPnP scan. */
+      upnpScanData?: UpnpScanData;
+    }
+
     /**
      * Results provided from a device scan on the local network.
      * @hidden
@@ -54,6 +64,11 @@ declare namespace smarthome {
      */
     IDENTIFY = 'action.devices.IDENTIFY',
     /**
+     * Fetch the state of the device.
+     * For more details, see the [[QueryHandler]].
+     */
+    QUERY = 'action.devices.QUERY',
+    /**
      * Report additional devices connected through a local proxy or hub.
      * For more details, see the [[ReachableDevicesHandler]].
      */
@@ -81,15 +96,15 @@ declare namespace smarthome {
   }
 
   /** Generic Intent request. Used in API signatures that accept any intent. */
-  export type IntentRequest = IntentFlow.ExecuteRequest|
-                              IntentFlow.IdentifyRequest|
-                              IntentFlow.ReachableDevicesRequest;
+  export type IntentRequest =
+      IntentFlow.ExecuteRequest|IntentFlow.IdentifyRequest|
+      IntentFlow.QueryRequest|IntentFlow.ReachableDevicesRequest;
 
 
   /** Generic Intent response. Used in API signatures that accept any intent. */
-  export type IntentResponse = IntentFlow.ExecuteResponse|
-                               IntentFlow.IdentifyResponse|
-                               IntentFlow.ReachableDevicesResponse;
+  export type IntentResponse =
+      IntentFlow.ExecuteResponse|IntentFlow.IdentifyResponse|
+      IntentFlow.QueryResponse|IntentFlow.ReachableDevicesResponse;
 
   /**
    * This class provides access to the devices managed by the local home
@@ -119,9 +134,11 @@ declare namespace smarthome {
      * See also [[HttpRequestData]], [[TcpRequestData]], [[UdpRequestData]]
      *
      * @param command  Command to communicate with the device.
+     * @param sendOptions  Options for `send` API. See [[SendOptions]].
      * @return  Promise that resolves to [[DataFlow.CommandSuccess]]
      */
-    send(command: DataFlow.CommandRequest): Promise<DataFlow.CommandSuccess>;
+    send(command: DataFlow.CommandRequest, sendOptions?: SendOptions):
+        Promise<DataFlow.CommandSuccess>;
     /**
      * `markPending` is called by the app when app is done handling an intent,
      * but the actual operation (usually EXECUTE command) is still not done.
@@ -129,14 +146,20 @@ declare namespace smarthome {
      * This may be useful for somewhat long running operations. Returns a
      * promise.
      * @param request  Original intent request that should be marked pending.
+     * @param response  Pending response to the intent request.
      */
-    markPending(request: IntentRequest): Promise<void>;
+    markPending(request: IntentRequest, response?: IntentResponse):
+        Promise<void>;
     /**
      * `getProxyInfo` is called by app to get information about the hub / bridge
      * controlling this end-device.
      * @param id  Device ID of end device that is being controlled by the hub.
      */
     getProxyInfo(id: string): ProxyInfo;
+    /**
+     * Returns the list of registered devices.
+     */
+    getRegisteredDevices(): IntentFlow.RegisteredDevice[];
   }
 
   /**
@@ -178,6 +201,11 @@ declare namespace smarthome {
      * @param handler  The handler that handles IDENTIFY intent.
      */
     onIdentify(handler: IntentFlow.IdentifyHandler): this;
+    /**
+     * `onQuery` is called by app to attach the handler for QUERY intent.
+     * @param handler  The handler that handles QUERY intent.
+     */
+    onQuery(handler: IntentFlow.QueryHandler): this;
     /**
      * `onReachableDevices` is called by app to attach the handler for
      * REACHABLE_DEVICES intent.

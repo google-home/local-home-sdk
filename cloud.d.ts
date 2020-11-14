@@ -52,7 +52,6 @@ declare namespace smarthome {
      * containing a list of device IDs to report state.
      *
      * See [[QueryHandler]] for more details.
-     * @hidden
      */
     export type QueryRequest = CloudRequest<QueryRequestPayload>;
 
@@ -192,7 +191,6 @@ declare namespace smarthome {
     /**
      * Callback registered with the [[App]] via [[App.onQuery()]] to process
      * requests for current device state.
-     * @hidden
      */
     export interface QueryHandler extends
         IntentHandler<QueryRequest, QueryResponse> {}

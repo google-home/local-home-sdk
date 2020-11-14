@@ -25,6 +25,13 @@ declare namespace smarthome {
    * @preferred
    */
   export namespace IntentFlow {
+    /**
+     * Describes the type of scannable code printed on the device, will be used
+     * by the GHA to know how to decode the scanned code.
+     * @hidden
+     */
+    type ScanMode = 'QR_CODE'|'BAR_CODE'|'ALPHA_NUMERIC_CODE';
+
     // Placeholder interface. Actual implementation depends on integration.
     interface DeviceScanData {}
 
@@ -131,6 +138,18 @@ declare namespace smarthome {
          * @hidden
          */
         canBeUnprovisionedOverProxy?: boolean;
+
+        /**
+         * Describes the type of scannable code printed on the device.
+         * @hidden
+         */
+        scanMode?: ScanMode;
+        /**
+         * If true, the platform will periodically send QUERY intents for the
+         * expecting JS to report state.
+         * @hidden
+         */
+        willReportStateViaPoll?: boolean;
       };
     }
 
