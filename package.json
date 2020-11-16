@@ -1,6 +1,6 @@
 {
   "name": "@google/local-home-sdk",
-  "version": "1.1.0",
+  "version": "1.4.0",
   "description": "TypeScript type definitions for the Local Home SDK",
   "license": "Apache-2.0",
   "author": "Google",
