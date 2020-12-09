@@ -1,3 +1,16 @@
 {
-	"extends": "dtslint/dtslint.json"
+  "extends": "dtslint/dtslint.json",
+  "rules": {
+    "no-redundant-jsdoc": false,
+    "no-empty-interface": false,
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-type",
+      "check-typecast"
+    ]
+  }
 }

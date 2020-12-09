@@ -10,7 +10,9 @@
     "strictFunctionTypes": true,
     "types": [],
     "noEmit": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": { "@google/local-home-sdk": ["."] }
   },
   "files": [
     "execute-builder.d.ts",
@@ -23,6 +25,6 @@
     "intentflow.d.ts",
     "proxy.d.ts",
     "scan-data.d.ts",
-    "types-tests.ts"
+    "test.ts"
   ]
 }

@@ -11,7 +11,6 @@
  * limitations under the License.
  */
 
-import * as smarthome from './index';
+import * as smarthome from "@google/local-home-sdk";
 
-const smarthomeApp: smarthome.App = new smarthome.App("1.1.1");
-
+const smarthomeApp: smarthome.App = new smarthome.App('1.1.1');
