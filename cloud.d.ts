@@ -21,26 +21,17 @@ declare namespace smarthome {
    * `smarthome.IntentFlow` is a namespace that encapsulates all
    * intent request and response objects.
    */
-  export namespace IntentFlow {
-    /**
-     * @hidden
-     */
+  namespace IntentFlow {
     interface CloudRequest<P> {
       requestId: string;
       inputs: Array<{intent: Intents; payload: P;}>;
     }
-    /**
-     * @hidden
-     */
     interface DeviceMetadata {
       /** Device ID provided in the `SYNC` response */
       id: string;
       /** Custom data provided in the `SYNC` response */
       customData?: unknown;
     }
-    /**
-     * @hidden
-     */
     interface QueryRequestPayload {
       /** List of devices to query */
       devices: DeviceMetadata[];
@@ -53,29 +44,20 @@ declare namespace smarthome {
      *
      * See [[QueryHandler]] for more details.
      */
-    export type QueryRequest = CloudRequest<QueryRequestPayload>;
+    type QueryRequest = CloudRequest<QueryRequestPayload>;
 
-    /**
-     * @hidden
-     */
     interface ExecuteRequestExecution {
       /** Device trait to be updated */
       command: string;
       /** New state values for the trait attributes */
       params: unknown;
     }
-    /**
-     * @hidden
-     */
     interface ExecuteRequestCommands {
       /** List of devices to update */
       devices: DeviceMetadata[];
       /** List of traits to update */
       execution: ExecuteRequestExecution[];
     }
-    /**
-     * @hidden
-     */
     interface ExecuteRequestPayload {
       /** List of commands to execute */
       commands: ExecuteRequestCommands[];
@@ -88,22 +70,18 @@ declare namespace smarthome {
      *
      * See [[ExecuteHandler]] for more details.
      */
-    export type ExecuteRequest = CloudRequest<ExecuteRequestPayload>;
+    type ExecuteRequest = CloudRequest<ExecuteRequestPayload>;
 
     /**
      * Response status codes for `EXECUTE` intent requests.
      */
-    export type ExecuteStatus =
-        'SUCCESS'|'PENDING'|'OFFLINE'|'ERROR'|'EXCEPTIONS';
+    type ExecuteStatus = 'SUCCESS'|'PENDING'|'OFFLINE'|'ERROR'|'EXCEPTIONS';
 
     /**
      * For a list of the supported `EXECUTE` error codes, see
      * [Errors and exceptions](/assistant/smarthome/reference/errors-exceptions)
      */
     type ExecuteErrors = string;
-    /**
-     * @hidden
-     */
     interface CloudResponse<P> {
       requestId: string;
       payload: P;
@@ -111,7 +89,6 @@ declare namespace smarthome {
     /**
      * Content of the [[QueryResponse]] returned by the application's
      * `QUERY` intent handler.
-     * @hidden
      */
     interface QueryPayload {
       devices: unknown;
@@ -120,13 +97,9 @@ declare namespace smarthome {
      * Response returned by the application's `QUERY` intent handler.
      *
      * See [[QueryHandler]] for more details.
-     * @hidden
      */
-    export type QueryResponse = CloudResponse<QueryPayload>;
+    type QueryResponse = CloudResponse<QueryPayload>;
 
-    /**
-     * @hidden
-     */
     interface ExecuteResponseCommands {
       /** List of affected device ids. */
       ids: string[];
@@ -148,7 +121,6 @@ declare namespace smarthome {
     /**
      * Content of the [[ExecuteResponse]] returned by the application's
      * `EXECUTE` intent handler.
-     * @hidden
      */
     interface ExecutePayload {
       /** List of command response details */
@@ -186,14 +158,13 @@ declare namespace smarthome {
      *
      * See [[ExecuteHandler]] for more details.
      */
-    export type ExecuteResponse = CloudResponse<ExecutePayload>;
+    type ExecuteResponse = CloudResponse<ExecutePayload>;
 
     /**
-     * Callback registered with the [[App]] via [[App.onQuery()]] to process
+     * Callback registered with the [[App]] via [[App.onQuery]] to process
      * requests for current device state.
      */
-    export interface QueryHandler extends
-        IntentHandler<QueryRequest, QueryResponse> {}
+    interface QueryHandler extends IntentHandler<QueryRequest, QueryResponse> {}
     /**
      * Callback registered with the [[App]] via [[App.onExecute]] to process
      * requests to update device state.
@@ -237,7 +208,7 @@ declare namespace smarthome {
      * ```
      *
      */
-    export interface ExecuteHandler extends
+    interface ExecuteHandler extends
         IntentHandler<ExecuteRequest, ExecuteResponse> {}
   }
 }

@@ -21,15 +21,14 @@ declare namespace smarthome {
    * `smarthome.IntentFlow` is a namespace that encapsulates all
    * intent request and response objects.
    */
-  export namespace IntentFlow {
-    /** Allows apps to choose the indication mode for their devices. */
-    export enum IndicationMode {BLINK = 'BLINK'}
+  namespace IntentFlow {
+    /** @hidden Allows apps to choose the indication mode for their devices. */
+    enum IndicationMode { BLINK = 'BLINK' }
 
     /**
      * Error codes that can be used in intent responses.
-     * @hidden
      */
-    export enum ErrorCode {
+    enum ErrorCode {
       /** Returned when the intent is not supported by the application. */
       NOT_SUPPORTED = 'NOT_SUPPORTED',
 
@@ -55,7 +54,7 @@ declare namespace smarthome {
     /**
      * Captures metadata about the device.
      */
-    export interface DeviceInfo {
+    interface DeviceInfo {
       /** Device manufacturer name */
       manufacturer: string;
       /** Device model name */
@@ -84,22 +83,6 @@ declare namespace smarthome {
     interface Device {
       /** Attributes provided in the `SYNC` response */
       attributes?: object;
-      /** @hidden */
-      bluetoothInfo?: {
-        /**
-         * To opt out of direct connection requirement, set this to true. In
-         * future, this field won't be necessary and will be removed from the
-         * typings.
-         */
-        // TODO(b/139368559): Cleanup REGISTER response.
-        commandedOverProxy?: boolean;
-        /**
-         * Set to true, for devices that can act as a proxy/hub. In future, this
-         * field won't be necessary and will be removed from the typings.
-         */
-        // TODO(b/139368559): Cleanup REGISTER response.
-        isProxy?: boolean;
-      };
       /** Custom data provided in the `SYNC` response */
       customData?: object;
       /** Metadata describing the device */
@@ -117,12 +100,14 @@ declare namespace smarthome {
       /** True if this device publishes state updates in real time */
       willReportState: boolean;
     }
-    /** @hidden */
+    /**
+     * Device registered with the platform.
+     */
     interface RegisteredDevice {
       id: string;
       customData?: unknown;
       radioType?: Constants.RadioType;
-      scanData?: IntentFlow.ScanData;
+      scanData?: ScanData;
     }
     /**
      * @hidden Generic intent request interface.
@@ -130,7 +115,7 @@ declare namespace smarthome {
     interface Params {}
 
     /**
-     * @hidden
+     * Generic intent request interface payload.
      */
     interface Payload<D, T = {}> {
       device: D;
@@ -138,14 +123,14 @@ declare namespace smarthome {
       params: T;
     }
     /**
-     * @hidden
+     * Generic intent request interface input.
      */
     interface Input<D, T = {}> {
       intent: Intents;
       payload: Payload<D, T>;
     }
     /**
-     * @hidden
+     * Generic intent request interface.
      */
     interface RequestInterface<D, T = {}> {
       requestId: string;
@@ -154,14 +139,14 @@ declare namespace smarthome {
       devices: RegisteredDevice[];
     }
     /**
-     * @hidden Generic intent response interface.
+     * Generic intent response interface payload.
      */
     interface ResponsePayload {
       errorCode?: string;
       debugString?: string;
     }
     /**
-     * @hidden
+     * Generate intent response interface.
      */
     interface ResponseInterface<P> {
       requestId: string;
@@ -171,7 +156,7 @@ declare namespace smarthome {
       payload: P;
     }
     /**
-     * @hidden Generic intent handler.
+     * Generic intent handler.
      */
     interface IntentHandler<REQ, RES> {
       /**
@@ -208,7 +193,7 @@ declare namespace smarthome {
      * [developer guide](/assistant/smarthome/develop/error-logging).
      *
      */
-    export class HandlerError extends Error {
+    class HandlerError extends Error {
       /** Request ID from the associated `EXECUTE` intent. */
       requestId: string;
       /** The cause for this error */
@@ -232,7 +217,7 @@ declare namespace smarthome {
      *
      * For more details on error handling, see [[HandlerError]].
      */
-    export class DeviceNotSupportedError extends HandlerError {
+    class DeviceNotSupportedError extends HandlerError {
       /**
        * @param requestId Request ID of the intent.
        * @param debugString Human readable description of this error.
@@ -248,7 +233,7 @@ declare namespace smarthome {
      *
      * For more details on error handling, see [[HandlerError]].
      */
-    export class DeviceNotIdentifiedError extends HandlerError {
+    class DeviceNotIdentifiedError extends HandlerError {
       /**
        * @param requestId Request ID of the intent.
        * @param debugString Human readable description of this error.
@@ -262,7 +247,7 @@ declare namespace smarthome {
      *
      * For more details on error handling, see [[HandlerError]].
      */
-    export class InvalidRequestError extends HandlerError {
+    class InvalidRequestError extends HandlerError {
       /**
        * @param requestId Request ID of the intent.
        * @param debugString Human readable description of this error.

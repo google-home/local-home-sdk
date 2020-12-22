@@ -20,11 +20,11 @@ declare namespace smarthome {
   /**
    * Classes for reporting the status of an `EXECUTE` intent.
    */
-  export namespace Execute.Response {
+  namespace Execute.Response {
     /**
      * Use this class to build an instance of [[ExecuteResponse]].
      */
-    export class Builder {
+    class Builder {
       /** @param requestId  Request ID of the Execute intent. */
       setRequestId(requestId: string): this;
       /**

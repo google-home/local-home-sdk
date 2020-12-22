@@ -17,7 +17,7 @@
 
 /** Declares interface to represent scan data that gets send in IDENTIFY. */
 declare namespace smarthome {
-  export namespace IntentFlow {
+  namespace IntentFlow {
     /**
      * Data payload returned with an mDNS scan result.
      * For mDNS discovery, the scan data contains fields from the SRV and TXT

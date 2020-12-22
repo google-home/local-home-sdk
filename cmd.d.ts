@@ -25,8 +25,7 @@ declare namespace smarthome {
    * over TCP, UDP, and HTTP.
    * @preferred
    */
-  export namespace DataFlow {
-    /** @hidden */
+  namespace DataFlow {
     interface HttpOptions {
       /** HTTP Content-Type header */
       dataType: string;
@@ -69,7 +68,6 @@ declare namespace smarthome {
     /** @hidden Supported Cipher Suites */
     type CipherSuites = 'EC-JPAKE';
 
-    /** @hidden */
     interface TcpOptions {
       /** @hidden True to enable TLS for this request */
       isSecure?: boolean;
@@ -91,7 +89,6 @@ declare namespace smarthome {
       /** Hex-encoded payload received from the device. */
       data: string;
     }
-    /** @hidden */
     interface UdpOptions {
       /** Port number on the target device */
       port: number;
@@ -107,7 +104,6 @@ declare namespace smarthome {
       /** Array of hex-encoded packets received from the device. */
       responsePackets?: string[];
     }
-    /** @hidden */
     interface CommandBase {
       /** Request ID from the associated `EXECUTE` intent.  */
       requestId: string;
@@ -116,7 +112,6 @@ declare namespace smarthome {
       /** Protocol to use when sending this command */
       protocol: Constants.Protocol;
     }
-    /** @hidden */
     interface Command extends CommandBase {
       /** Payload sent to the target device */
       data: string;
@@ -178,7 +173,7 @@ declare namespace smarthome {
      *  });
      * ```
      */
-    export class HttpRequestData implements HttpRequestData {}
+    class HttpRequestData implements HttpRequestData {}
     /**
      * Request to send a local device command over TCP sockets.
      * Commands are sent to the device using [[DeviceManager.send]].
@@ -217,7 +212,7 @@ declare namespace smarthome {
      *  });
      * ```
      */
-    export class TcpRequestData implements TcpRequestData {}
+    class TcpRequestData implements TcpRequestData {}
     /**
      * Request to send a local device command over UDP datagram.
      * Commands are sent to the device using [[DeviceManager.send]].
@@ -257,24 +252,24 @@ declare namespace smarthome {
      *  });
      * ```
      */
-    export class UdpRequestData implements UdpRequestData {}
+    class UdpRequestData implements UdpRequestData {}
 
     /**
      * Successful response to a [[DeviceManager]] command.
      */
     interface CommandSuccess extends CommandBase {}
     /** Command result containing an [[HttpResponse]]. */
-    export interface HttpResponseData extends CommandSuccess {
+    interface HttpResponseData extends CommandSuccess {
       /** Response to an HTTP request */
       httpResponse: HttpResponse;
     }
     /** Command result containing a [[TcpResponse]]. */
-    export interface TcpResponseData extends CommandSuccess {
+    interface TcpResponseData extends CommandSuccess {
       /** Response to a TCP request */
       tcpResponse: TcpResponse;
     }
     /** Command result containing a [[UdpResponse]]. */
-    export interface UdpResponseData extends CommandSuccess {
+    interface UdpResponseData extends CommandSuccess {
       /** Response to a UDP request. */
       udpResponse: UdpResponse;
     }
@@ -285,7 +280,7 @@ declare namespace smarthome {
      *
      * @deprecated See [[HandlerError]] for handling command failures.
      */
-    export interface CommandFailure extends CommandBase {
+    interface CommandFailure extends CommandBase {
       /** The cause for this error */
       errorCode: string;
       /** Human readable description of this error */
@@ -300,7 +295,7 @@ declare namespace smarthome {
    * Use `send(command, {retries: 2, delayInMilliseconds: 20});` to retry a
    * command 2 times with 20ms delay between each retry.
    */
-  export interface SendOptions {
+  interface SendOptions {
     /**
      * Waits for command response for upto `commandTimeout` ms but no less than
      * 1000ms. Usage outside execute handler is not recommended. In addition, it

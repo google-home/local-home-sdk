@@ -21,16 +21,16 @@
  */
 declare namespace smarthome {
   // Placeholder enum. Actual implementation depends on integration.
-  export enum Intents {}
+  enum Intents {}
 
   /**
    * Common data type enumerations.
    */
-  export namespace Constants {
+  namespace Constants {
     /**
      * Radio types, useful for apps in deciding the transport to use.
      */
-    export enum RadioType {
+    enum RadioType {
       /** @hidden */
       BLE = 'BLE',
       WIFI = 'WIFI',
@@ -41,7 +41,7 @@ declare namespace smarthome {
      * This value is handled automatically by the SDK when using
      * [[HttpRequestData]], [[TcpRequestData]], and [[UdpRequestData]].
      */
-    export enum Protocol {
+    enum Protocol {
       /** @hidden */
       BLE = 'BLE',
       HTTP = 'HTTP',
@@ -55,7 +55,7 @@ declare namespace smarthome {
      * Supported operations by BLE transport.
      * @hidden
      */
-    export enum BleOperation {
+    enum BleOperation {
       CREATE_BOND = 'CREATE_BOND',
       DISCONNECT = 'DISCONNECT',
       READ = 'READ',
@@ -69,7 +69,7 @@ declare namespace smarthome {
     /**
      * HTTP transport methods supported by [[HttpRequestData]].
      */
-    export enum HttpOperation {
+    enum HttpOperation {
       GET = 'GET',
       POST = 'POST',
       PUT = 'PUT',
@@ -78,7 +78,7 @@ declare namespace smarthome {
     /**
      * TCP transport methods supported by [[TcpRequestData]].
      */
-    export enum TcpOperation {
+    enum TcpOperation {
       READ = 'READ',
       WRITE = 'WRITE',
     }

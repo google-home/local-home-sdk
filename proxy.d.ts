@@ -24,7 +24,7 @@ declare namespace smarthome {
    *
    * See [[DeviceManager.getProxyInfo]].
    */
-  export interface ProxyInfo {
+  interface ProxyInfo {
     /** Device ID of the proxy device */
     proxyDeviceId: string;
     /** Device ID of the end device. */

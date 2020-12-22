@@ -24,7 +24,7 @@ declare namespace smarthome {
    * Encapsulates all intent request and response objects.
    * @preferred
    */
-  export namespace IntentFlow {
+  namespace IntentFlow {
     /**
      * Describes the type of scannable code printed on the device, will be used
      * by the GHA to know how to decode the scanned code.
@@ -35,9 +35,6 @@ declare namespace smarthome {
     // Placeholder interface. Actual implementation depends on integration.
     interface DeviceScanData {}
 
-    /**
-     * @hidden
-     */
     interface LocalUnIdentifiedDevice extends DeviceScanData {}
 
     /**
@@ -63,7 +60,7 @@ declare namespace smarthome {
      *
      * See [[IdentifyHandler]] for more details.
      */
-    export type IdentifyRequest = RequestInterface<LocalIdentifiedDevice>;
+    type IdentifyRequest = RequestInterface<LocalIdentifiedDevice>;
 
     /**
      * Request passed to the application's `REACHABLE_DEVICES` intent handler,
@@ -72,8 +69,7 @@ declare namespace smarthome {
      *
      * See [[ReachableDevicesHandler]] for more details.
      */
-    export type ReachableDevicesRequest =
-        RequestInterface<LocalIdentifiedDevice>;
+    type ReachableDevicesRequest = RequestInterface<LocalIdentifiedDevice>;
 
     /**
      * Content of the [[IdentifyResponse]] returned by the application's
@@ -147,7 +143,6 @@ declare namespace smarthome {
         /**
          * If true, the platform will periodically send QUERY intents for the
          * expecting JS to report state.
-         * @hidden
          */
         willReportStateViaPoll?: boolean;
       };
@@ -179,15 +174,14 @@ declare namespace smarthome {
      *
      * See [[IdentifyHandler]] for more details.
      */
-    export type IdentifyResponse = ResponseInterface<IdentifyResponsePayload>;
+    type IdentifyResponse = ResponseInterface<IdentifyResponsePayload>;
     /**
      * Response returned by the application's `REACHABLE_DEVICES` intent handler
      * to describe additional devices visible to the proxy device.
      *
      * See [[ReachableDevicesHandler]] for more details.
      */
-    export type ReachableDevicesResponse =
-        ResponseInterface<ReachableDevicesPayload>;
+    type ReachableDevicesResponse = ResponseInterface<ReachableDevicesPayload>;
 
     /**
      * Callback registered with the [[App]] via [[App.onIdentify]] to process
@@ -228,7 +222,7 @@ declare namespace smarthome {
      * ```
      *
      */
-    export interface IdentifyHandler extends
+    interface IdentifyHandler extends
         IntentHandler<IdentifyRequest, IdentifyResponse> {}
 
     /**
@@ -274,7 +268,7 @@ declare namespace smarthome {
      * ```
      *
      */
-    export interface ReachableDevicesHandler extends
+    interface ReachableDevicesHandler extends
         IntentHandler<ReachableDevicesRequest, ReachableDevicesResponse> {}
   }
 }

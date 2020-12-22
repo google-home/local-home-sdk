@@ -22,8 +22,7 @@
  * platform.
  */
 declare namespace smarthome {
-  export namespace IntentFlow {
-    /** @hidden */
+  namespace IntentFlow {
     interface ScanData {
       /** Contains data if this result came from an mDNS scan. */
       mdnsScanData?: MdnsScanData;
@@ -35,7 +34,6 @@ declare namespace smarthome {
 
     /**
      * Results provided from a device scan on the local network.
-     * @hidden
      */
     interface DeviceScanData {
       /** List of radio interfaces used during the scan. */
@@ -52,7 +50,7 @@ declare namespace smarthome {
   /**
    * Smart home intents for discovery and control of local devices.
    */
-  export enum Intents {
+  enum Intents {
     /**
      * Handle an execution request for a device with an established local
      * execution path. For more details, see the [[ExecuteHandler]].
@@ -75,34 +73,32 @@ declare namespace smarthome {
     REACHABLE_DEVICES = 'action.devices.REACHABLE_DEVICES',
   }
 
-  export namespace DataFlow {
+  namespace DataFlow {
     /**
      * Generic options object.
      */
-    export type CommandOptions = HttpOptions|TcpOptions|UdpOptions;
+    type CommandOptions = HttpOptions|TcpOptions|UdpOptions;
 
     /**
      * Generic command request object that can be used in function signatures
      * that work with command objects in a generic way.
      */
-    export type CommandRequest = HttpRequestData|TcpRequestData|UdpRequestData;
+    type CommandRequest = HttpRequestData|TcpRequestData|UdpRequestData;
 
     /**
      * Generic command response object that can be used in function signatures
      * that work with command objects in a generic way.
      */
-    export type CommandResponse =
-        HttpResponseData|TcpResponseData|UdpResponseData;
+    type CommandResponse = HttpResponseData|TcpResponseData|UdpResponseData;
   }
 
   /** Generic Intent request. Used in API signatures that accept any intent. */
-  export type IntentRequest =
+  type IntentRequest =
       IntentFlow.ExecuteRequest|IntentFlow.IdentifyRequest|
       IntentFlow.QueryRequest|IntentFlow.ReachableDevicesRequest;
 
-
   /** Generic Intent response. Used in API signatures that accept any intent. */
-  export type IntentResponse =
+  type IntentResponse =
       IntentFlow.ExecuteResponse|IntentFlow.IdentifyResponse|
       IntentFlow.QueryResponse|IntentFlow.ReachableDevicesResponse;
 
@@ -123,7 +119,7 @@ declare namespace smarthome {
    * ```
    *
    */
-  export interface DeviceManager {
+  interface DeviceManager {
     /**
      * `send` is called by app when it needs to communicate with a device.
      * Depending upon the protocol used by the device, the app constructs a
@@ -179,7 +175,7 @@ declare namespace smarthome {
    * ```
    *
    */
-  export class App {
+  class App {
     constructor(version: string);
     /**
      * `getDeviceManager` is called by app to get the reference to the singleton
