@@ -47,6 +47,8 @@ function generateToc(project) {
   // Return YAML doc
   return YAML.stringify({
     toc: packages,
+  }, {
+    indentSeq: false,
   });
 }
 

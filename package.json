@@ -1,6 +1,6 @@
 {
   "name": "@google/local-home-sdk",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "TypeScript type definitions for the Local Home SDK",
   "license": "Apache-2.0",
   "author": "Google",
@@ -16,11 +16,12 @@
     "cloud.d.ts",
     "cmd.d.ts",
     "constants.d.ts",
-    "execution-only.d.ts",
+    "local-fulfillment.d.ts",
     "generic.d.ts",
     "index.d.ts",
     "intentflow.d.ts",
     "proxy.d.ts",
+    "report-state-builder.d.ts",
     "scan-data.d.ts"
   ],
   "devDependencies": {
