@@ -15,9 +15,20 @@
  * limitations under the License.
  */
 
+// Minimum TypeScript Version: 3.0
+
 /** Declares interface to represent scan data that gets send in IDENTIFY. */
 declare namespace smarthome {
   namespace IntentFlow {
+    interface BleScanData {
+      name: string;
+      flags: string;
+      serviceUuids: string[];
+      manufacturerData: Map<string, string>;
+      typeToData: Array<Map<string, string>>;
+      macAddress?: string;
+    }
+
     /**
      * Data payload returned with an mDNS scan result.
      * For mDNS discovery, the scan data contains fields from the SRV and TXT

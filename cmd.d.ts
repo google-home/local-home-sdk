@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+// Minimum TypeScript Version: 3.0
+
 /**
  * Declares DataFlow namespace that provides interface to send commands to
  * platform using DeviceManager send API.
@@ -22,10 +24,34 @@
 declare namespace smarthome {
   /**
    * Request and response interfaces for communicating with local devices
-   * over TCP, UDP, and HTTP.
+   * over BLE, TCP, UDP, and HTTP.
    * @preferred
    */
   namespace DataFlow {
+    interface BleOptions {
+      characteristicUuid: string;
+      serviceUuid: string;
+      operation: Constants.BleOperation;
+      waitForNotification?: boolean;
+      mtu?: number;
+    }
+
+    interface BleRequestData extends Command, BleOptions {}
+
+    /** For sending BLE commands using DeviceManager.send API. */
+    class BleRequestData implements BleRequestData {}
+
+    interface BleResponse {
+      value: string;
+      characteristicUuid: string;
+      serviceUuid: string;
+    }
+
+    /** Describes the response for a BLE Request. */
+    interface BleResponseData extends CommandSuccess {
+      bleResponse: BleResponse;
+    }
+
     interface HttpOptions {
       /** HTTP Content-Type header */
       dataType: string;

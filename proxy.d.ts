@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+// Minimum TypeScript Version: 3.0
+
 /**
  * Declares types specific to proxy / hub scenarios.
  */

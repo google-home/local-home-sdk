@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+// Minimum TypeScript Version: 3.0
+
 /** Declares Execute Response builder. */
 declare namespace smarthome {
   /**

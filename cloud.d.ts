@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+// Minimum TypeScript Version: 3.0
+
 /** Declares the request and response JSON for cloud intents. */
 declare namespace smarthome {
   /**
@@ -25,6 +27,8 @@ declare namespace smarthome {
     interface CloudRequest<P> {
       requestId: string;
       inputs: Array<{intent: Intents; payload: P;}>;
+      /** @deprecated use [[DeviceManager.getRegisteredDevices]] */
+      devices?: RegisteredDevice[];
     }
     interface DeviceMetadata {
       /** Device ID provided in the `SYNC` response */

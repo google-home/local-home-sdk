@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+// Minimum TypeScript Version: 3.0
+
 /**
  * Main interfaces to access local home platform functionality.
  * @preferred
@@ -31,7 +33,6 @@ declare namespace smarthome {
      * Radio types, useful for apps in deciding the transport to use.
      */
     enum RadioType {
-      /** @hidden */
       BLE = 'BLE',
       WIFI = 'WIFI',
     }
@@ -39,21 +40,18 @@ declare namespace smarthome {
     /**
      * Protocol to be used in commands while communicating with the SDK.
      * This value is handled automatically by the SDK when using
-     * [[HttpRequestData]], [[TcpRequestData]], and [[UdpRequestData]].
+     * [[BleRequestData]], [[HttpRequestData]], [[TcpRequestData]], and
+     * [[UdpRequestData]].
      */
     enum Protocol {
-      /** @hidden */
       BLE = 'BLE',
       HTTP = 'HTTP',
       TCP = 'TCP',
       UDP = 'UDP',
-      /** @hidden */
-      BLE_MESH = 'BLE_MESH'
     }
 
     /**
      * Supported operations by BLE transport.
-     * @hidden
      */
     enum BleOperation {
       CREATE_BOND = 'CREATE_BOND',
@@ -81,6 +79,12 @@ declare namespace smarthome {
     enum TcpOperation {
       READ = 'READ',
       WRITE = 'WRITE',
+    }
+
+    /** Supported event types. */
+    enum EventType {
+      AUTOCONNECT = 'autoconnect',
+      DISCONNECT = 'disconnect',
     }
   }
 }

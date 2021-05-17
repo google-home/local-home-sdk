@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+// Minimum TypeScript Version: 3.0
+
 /** Declares generic intent request and response JSONs. */
 declare namespace smarthome {
   /**
@@ -22,7 +24,9 @@ declare namespace smarthome {
    * intent request and response objects.
    */
   namespace IntentFlow {
-    /** @hidden Allows apps to choose the indication mode for their devices. */
+    /**
+     * Allows apps to choose the indication mode for their devices.
+     */
     enum IndicationMode { BLINK = 'BLINK' }
 
     /**
@@ -66,7 +70,7 @@ declare namespace smarthome {
     }
 
     /**
-     * @hidden
+     * Primary and additional device names.
      */
     interface DeviceNames {
       /** Primary name of the device */
@@ -76,9 +80,9 @@ declare namespace smarthome {
       /** Additional names provided by the user */
       nicknames?: string[];
     }
+
     /**
      * Properties for a given device as provided in the `SYNC` response.
-     * @hidden
      */
     interface Device {
       /** Attributes provided in the `SYNC` response */
@@ -109,32 +113,16 @@ declare namespace smarthome {
       radioType?: Constants.RadioType;
       scanData?: ScanData;
     }
-    /**
-     * @hidden Generic intent request interface.
-     */
-    interface Params {}
 
-    /**
-     * Generic intent request interface payload.
-     */
-    interface Payload<D, T = {}> {
-      device: D;
-      structureData: unknown;
-      params: T;
-    }
-    /**
-     * Generic intent request interface input.
-     */
-    interface Input<D, T = {}> {
-      intent: Intents;
-      payload: Payload<D, T>;
-    }
     /**
      * Generic intent request interface.
      */
     interface RequestInterface<D, T = {}> {
       requestId: string;
-      inputs: Array<Input<D, T>>;
+      inputs: Array<{
+        intent: Intents;
+        payload: {device: D; structureData: unknown; params?: T;}
+      }>;
       /** @deprecated use [[DeviceManager.getRegisteredDevices]] */
       devices: RegisteredDevice[];
     }
